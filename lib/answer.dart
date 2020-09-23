@@ -7,7 +7,6 @@ class Answer extends StatelessWidget {
   Answer(this.selectHandler, this.answerText);
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Container(
       width: double.infinity,
       child: RaisedButton(
@@ -17,6 +16,5 @@ class Answer extends StatelessWidget {
         onPressed: selectHandler,
       ),
     );
-    throw UnimplementedError();
   }
 }
