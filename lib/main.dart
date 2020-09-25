@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/result.dart';
 
 import 'quiz.dart';
-  
+
 void main() {
   runApp(MyApp());
 }
@@ -15,21 +16,36 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalScore = 0;
   final _questions = const [
     {
       'questionText': 'What\'s your favourite color?',
-      'answers': ['Blue', 'Green', 'Purple', 'Yellow']
+      'answers': [
+        {'text': 'Blue', 'score': 10},
+        {'text': 'Green', 'score': 12},
+        {'text': 'Purple', 'score': 1},
+        {'text': 'Yellow', 'score': 3},
+      ]
     },
     {
       'questionText': 'What is your favourite football team?',
-      'answers': ['Werder', 'BVB', 'HSV']
+      'answers': [
+        {'text': 'Werder', 'score': 20},
+        {'text': 'BVB', 'score': 10},
+        {'text': 'HSV', 'score': 0},
+      ]
     },
     {
       'questionText': 'What is your favourite animal?',
-      'answers': ['Lion', 'Tiger', 'Dog']
+      'answers': [
+        {'text': 'Lion', 'score': 15},
+        {'text': 'Tiger', 'score': 10},
+        {'text': 'Dog', 'score': 15},
+      ]
     },
   ];
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
+    _totalScore += score;
     setState(() {
       _questionIndex++;
     });
@@ -54,9 +70,7 @@ class _MyAppState extends State<MyApp> {
                 questionIndex: _questionIndex,
                 questions: _questions,
               )
-            : Center(
-                child: Text("You did it"),
-              ),
+            : Result(_totalScore),
       ),
     );
   }
